@@ -49,9 +49,7 @@ Router.post("/signup", async(req, res) => {
     try {
         await ValidationSignin(req.body.credentials);
 
-        const user = await UserModel.findByEmailAndPassword(
-            req.body.credentials
-        );
+        const user = await UserModel.findEmailAndPassword(req.body.credentials);
 
         //JWT Auth token /we used it for checking 
         const token = user.generateJwtToken();

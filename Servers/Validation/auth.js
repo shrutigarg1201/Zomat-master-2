@@ -3,8 +3,8 @@ import joi from "joi";
 export const ValidationSignup = (userData) => {
     const Schema = joi.object({
         fullname: joi.string().required().min(3),
-        email: joi.string().email(),
-        password: joi.string().min(6),
+        email: joi.string().email().required(),
+        password: joi.string().min(6).required(),
         address: joi.array().items(joi.object({detail: joi.string(), for: joi.string()})),
         phoneNumber: joi.number().min(10).max(10)
     });
